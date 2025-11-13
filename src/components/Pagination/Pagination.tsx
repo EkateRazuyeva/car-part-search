@@ -24,6 +24,7 @@ export const Pagination = ({ currentPage, totalItems, itemsPerPage, onPageChange
             <span className="page-info">{currentPage} / {totalPages}</span>
 
             <button
+                className={"btn"}
                 disabled={currentPage === totalPages}
                 onClick={() => onPageChange(currentPage + 1)}
             >
