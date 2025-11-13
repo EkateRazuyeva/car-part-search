@@ -1,0 +1,13 @@
+{
+  "files": {
+    "main.css": "/car-part-search/static/css/main.9e7d1188.css",
+    "main.js": "/car-part-search/static/js/main.40d251d8.js",
+    "index.html": "/car-part-search/index.html",
+    "main.9e7d1188.css.map": "/car-part-search/static/css/main.9e7d1188.css.map",
+    "main.40d251d8.js.map": "/car-part-search/static/js/main.40d251d8.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.9e7d1188.css",
+    "static/js/main.40d251d8.js"
+  ]
+}
