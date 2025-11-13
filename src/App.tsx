@@ -3,6 +3,7 @@ import './App.css';
 import {SearchInput} from './components/SearchInput/SearchInput';
 import {fetchPartsByName} from './services/api';
 import {Part} from './services/types';
+import {PartsList} from './components/PartsList/PsrtsList';
 
 function App() {
     const [parts, setParts] = useState<Part[]>([]);
@@ -17,7 +18,7 @@ function App() {
             setParts(data.Results || []);
             console.log(data);
         } catch (error) {
-            console.error("Ошибка при поиске запчастей:", error);
+            console.error('Ошибка при поиске запчастей:', error);
         } finally {
             setLoading(false);
         }
@@ -25,20 +26,9 @@ function App() {
 
     return (
         <div className="App">
-            <SearchInput onSearch={handleSearch} />
+            <SearchInput onSearch={handleSearch}/>
 
-            {loading ? (
-                <p>Загрузка...</p>
-            ) : (
-                parts.map((part, i) => (
-                    <div key={i}>
-                        <strong>{part.Name}</strong>
-                        <span>{part.URL}</span>
-                        <div>{part.ManufacturerName}</div>
-
-                    </div>
-                ))
-            )}
+            {loading ? <p>Загрузка...</p> : <PartsList parts={parts}/>}
         </div>
     );
 }
