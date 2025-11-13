@@ -1,13 +1,17 @@
 import React, {useCallback, useState} from 'react';
 import './App.css';
 import {SearchInput} from './components/SearchInput/SearchInput';
-import {fetchPartsByName} from './services/api';
-import {Part} from './services/types';
+import {fetchManufacturerDetails, fetchPartsByName} from './services/api';
+import {ManufacturerDetails, Part} from './services/types';
 import {PartsList} from './components/PartsList/PsrtsList';
+import {DetailsModal} from './components/DetailModal/DetailModal';
 
 function App() {
     const [parts, setParts] = useState<Part[]>([]);
+    const [details, setDetails] = useState<ManufacturerDetails[]>([]);
     const [loading, setLoading] = useState(false);
+    const [modal, setModal] = useState<boolean>(false);
+
 
     const handleSearch = useCallback(async (term: string) => {
         if (!term.trim()) return;
@@ -24,11 +28,25 @@ function App() {
         }
     }, []);
 
+
+    const handleModal = useCallback(async (id: number) => {
+        try {
+            const data = await fetchManufacturerDetails(id);
+            if (data?.Results) {
+                setDetails(data.Results);
+                setModal(true);
+            }
+        } catch (error) {
+            console.error('Ошибка при получении данных производителя:', error);
+        }
+    }, []);
+
     return (
         <div className="App">
             <SearchInput onSearch={handleSearch}/>
 
-            {loading ? <p>Загрузка...</p> : <PartsList parts={parts}/>}
+            {loading ? <p>Загрузка...</p> : <PartsList parts={parts} onModal={handleModal}/>}
+            {modal && <DetailsModal details={details} onClose={() => setModal(false)}/>}
         </div>
     );
 }

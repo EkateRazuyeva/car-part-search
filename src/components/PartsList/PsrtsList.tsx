@@ -1,10 +1,12 @@
 import {Part} from '../../services/types';
 import './PartsList.css'
-type Props ={
+
+type Props = {
     parts: Part[];
+    onModal: (id: number) => void;
 }
 
-export const PartsList = ({parts}:Props) => {
+export const PartsList = ({parts, onModal}: Props) => {
     return (<div className="parts-list">
             {parts.map((part, i) => (
                 <div key={i} className="part-card">
@@ -19,7 +21,10 @@ export const PartsList = ({parts}:Props) => {
                             Детали
                         </a>
                     )}
-                    <div className="card-manufacturer">{part.ManufacturerName}</div>
+                    <div className="card-manufacturer"
+                         onClick={() => {onModal(part.ManufacturerId)}}>
+                        {part.ManufacturerName}
+                    </div>
                 </div>
             ))}
         </div>

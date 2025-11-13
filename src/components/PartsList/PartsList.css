@@ -38,6 +38,12 @@
 }
 
 .card-manufacturer {
-    font-size: 14px;
-    color: #5e2b8c;
+    color: #5b21b6;
+    text-decoration: underline;
+    cursor: pointer;
+    font-weight: 500;
+}
+
+.card-manufacturer:hover {
+    color: #7c3aed;
 }

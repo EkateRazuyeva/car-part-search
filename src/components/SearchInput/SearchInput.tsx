@@ -3,7 +3,6 @@ import './SearchInput.css'
 
 type Props = {
     onSearch: (trim: string) => void;
-
 }
 
 export const SearchInput = ({onSearch}: Props) => {
