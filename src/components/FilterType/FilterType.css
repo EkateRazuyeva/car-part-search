@@ -1,0 +1,33 @@
+.filter-wrapper {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    margin-bottom: 16px;
+}
+
+.filter-label {
+    font-size: 14px;
+    font-weight: 500;
+    color: #5b21b6;
+}
+.filter-select {
+    padding: 8px 12px;
+    border-radius: 8px;
+    border: 1px solid #ddd;
+    font-size: 16px;
+    outline: none;
+    color: #4c1d95;
+    background-color: #f5f3ff;
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+
+.filter-select:hover {
+    border-color: #7c3aed;
+}
+
+.filter-select:focus {
+    border-color: #7c3aed;
+    box-shadow: 0 0 0 2px rgba(124, 58, 237, 0.2);
+}
